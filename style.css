@@ -1,0 +1,49 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html, body {
+    background-color: #011627;
+}
+
+.container {
+    width: 800px;
+    height: 800px;
+    margin: 60px auto;
+    border: 2px solid white;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square {
+    border:2px solid white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.facile {
+    width: 10%;
+    height: 10%;
+}
+
+.difficile {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.medio {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.click-true {
+    background-color: white;
+}
+
+.bomb {
+    background-color: red !important;
+}
