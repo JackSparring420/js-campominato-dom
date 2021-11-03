@@ -29,19 +29,20 @@ if(livello == "facile") {
 
 let bomb = createBombs(dimensione);
 
-for(let i = 0; i < dimensione; i++) {
+for(let i = 1; i<= dimensione; i++) {
     // let newElement = elementGen("div", "square", "difficolta")
     let newElement = document.createElement("div")
     newElement.classList.add(difficolta)
     newElement.classList.add("square")
     
-    newElement.innerText += i+1;
+    newElement.innerText += i;
     newElement.addEventListener("click",
     function() {
         this.classList.add("click-true")
         if(bomb === i) {
             this.classList.add("bomb")
         }
+        console.log(i);
         }
     )
     
