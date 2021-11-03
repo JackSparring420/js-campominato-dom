@@ -3,6 +3,7 @@
 // 2 Creo una variabile in cui riporto la funzione
 // 3 Metto a confronto i numeri dell'array con le posizoni dei singoli quadrati
     // 3.1 se corrisponde aggiungo la classe bomb per cambiare il colore del quadrato
+// 4 Porto la cdlasse bomb su tette le mine per scoprirle tutte
 
 
 const gridCont = document.getElementById("grid");
@@ -35,15 +36,25 @@ for(let i = 1; i<= dimensione; i++) {
     newElement.classList.add(difficolta)
     newElement.classList.add("square")
     
+    let found = false;
+
     newElement.innerText += i;
     newElement.addEventListener("click",
     function() {
-        this.classList.add("click-true")
-        if(bomb === i) {
-            this.classList.add("bomb")
+        this.classList.add("click-true");
+                    
+            for (let a = 0; a <= bomb.length ; a++){
+                if (i === bomb[a]) {
+                    found = true;
+                }
+
+            }
+                
+            if (found === true) {
+                    this.classList.add("bomb");
+            }
         }
-        console.log(i);
-        }
+        
     )
     
     gridCont.appendChild(newElement)
@@ -66,7 +77,7 @@ function createBombs(numberSquare){
         
         let randombomb = Math.floor(Math.random() * numberSquare) + 1;
 
-        let trovato = false;
+        // let trovato = false;
         // if (randombomb === bombs[i]){
         //     trovato = true;
         // }

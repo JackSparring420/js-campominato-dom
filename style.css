@@ -15,6 +15,7 @@ html, body {
     border: 2px solid white;
     display: flex;
     flex-wrap: wrap;
+    color: white;
 }
 
 .square {
