@@ -30,7 +30,7 @@ if(livello == "facile") {
     dimensione = 81
     difficolta = "medio"
 } else if (livello== "difficile"){
-    dimensione = 17;
+    dimensione = 49;
     difficolta ="difficile";
 }
 
@@ -52,25 +52,35 @@ for(let i = 1; i<= dimensione; i++) {
         newElement.classList.add('bomb');
     }
     
-    newElement.innerText += i;
     newElement.addEventListener("click",
     function () {
+        // conto quadrati e click
+        newElement.innerText += i;
         conteggioClick += 1;
         document.getElementById("conteggi").innerHTML = "Il tuo punteggio è di: " + conteggioClick;
-        this.classList.add("click-true");
-        let found = false;
+        
+        // if(i === newElement){  riguradalo stasera
+        //     conteggioClick--;
+        // }
+        // console.log(i);
 
+        // clicco su un quadrato
+        this.classList.add("click-true");
+        // ho vinto
         if ( conteggioClick == squareMax){
             alert("Hai Vinto!");
         }
-
-
+        
+        // prendo la bomba
+        let found = false;
         for (let a = 0; a <= bomb.length ; a++){
             if (i === bomb[a]) {
                 found = true;
             }
         }
+
         
+        // ho perso
         if (found === true) {
             this.classList.add("hit");
             // Il giocatore ha perso
@@ -117,7 +127,7 @@ for(let i = 1; i<= dimensione; i++) {
                         bombs.push(randombomb);
                     }         
                 }
-                console.log(bombs); 
+                // console.log(bombs); 
                 return bombs
             }
 
