@@ -45,6 +45,6 @@ html, body {
     background-color: white;
 }
 
-.bomb {
+.hit {
     background-color: red !important;
 }
