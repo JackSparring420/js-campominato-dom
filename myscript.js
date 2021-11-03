@@ -8,6 +8,9 @@
     // 4.2 genero una variabile che va a selezionare tutti i valori marcari
     // 4.3 con un ciclo for aggiungo la classe hit a tutti gli elementi marcati
 // 5 Conto quanti clicchi fa l'utente
+    // 5.1 creo una variabile fuori dal ciclo for per tenete il conteggio
+    // 5.2 richiamo la variabile dentro la funzione del click con += 1 così va ad incrementare il suo valore di una unità ad ogni click
+// 6 imposto le condizioni di vincita del gioco
 
 
 const gridCont = document.getElementById("grid");
@@ -27,11 +30,17 @@ if(livello == "facile") {
     dimensione = 81
     difficolta = "medio"
 } else if (livello== "difficile"){
-    dimensione = 49;
+    dimensione = 17;
     difficolta ="difficile";
 }
 
 let bomb = createBombs(dimensione);
+
+var conteggioClick = 0;
+
+let squareMax = dimensione - 16;
+console.log(squareMax);
+
 
 for(let i = 1; i<= dimensione; i++) {
     // let newElement = elementGen("div", "square", "difficolta")
@@ -44,11 +53,18 @@ for(let i = 1; i<= dimensione; i++) {
     }
     
     newElement.innerText += i;
-    
     newElement.addEventListener("click",
-    function contatore() {
+    function () {
+        conteggioClick += 1;
+        document.getElementById("conteggi").innerHTML = "Il tuo punteggio è di: " + conteggioClick;
         this.classList.add("click-true");
         let found = false;
+
+        if ( conteggioClick == squareMax){
+            alert("Hai Vinto!");
+        }
+
+
         for (let a = 0; a <= bomb.length ; a++){
             if (i === bomb[a]) {
                 found = true;
@@ -63,7 +79,7 @@ for(let i = 1; i<= dimensione; i++) {
             for (let j = 0; j < bombs.length; j++) {
                 bombs[j].classList.add('hit');
             }
-            
+            prompt("Hai perso!");
         }
         console.log(i);
     });
@@ -105,7 +121,4 @@ for(let i = 1; i<= dimensione; i++) {
                 return bombs
             }
 
-            var counterVal = 0;
-            function incrementClick() {
-                updateDisplay(++counterVal);
-            }
+            
